@@ -23,5 +23,3 @@ export type DigestNight = {
 // Reads runs/<night>.jsonl. Returns null when the night has no file (the route answers 404).
 // An empty file gives rows: []. Never throws on a bad line.
 export type ReadNight = (runsDir: string, night: string) => DigestNight | null;
-
-export declare function readNight(runsDir: string, night: string): DigestNight | null;
