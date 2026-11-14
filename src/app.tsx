@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
 import { loadConfig, type RigConfig } from './config.js';
+import { digestApi } from './digest/api.js';
 import { lane } from './lane.js';
 import { readStatus } from './status.js';
 import { readNight } from './digest/reader.js';
@@ -30,6 +31,8 @@ export function createApp(config: RigConfig = loadConfig()) {
       </Layout>,
     );
   });
+
+  app.route('/', digestApi(config));
 
   return app;
 }
